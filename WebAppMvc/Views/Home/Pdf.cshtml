@@ -1,4 +1,6 @@
-﻿@{
+﻿@using WebAppMvc.ViewModels;
+@model PdfViewModel
+@{
     ViewData["Title"] = "PDF Files";
 }
 <div class="container">
@@ -9,10 +11,15 @@
     </div>
     <div class="row">
         <div class="col-8 text-center">
-            <a href="/Download/blank.pdf">blank</a>
-        </div>
-        <div class="col-4">
-            Download blank pdf file for testing
+            <span>Pdf File</span>
         </div>
     </div>
+    @foreach(var file in Model.PdfFiles)
+    {
+        <div class="row">
+            <div class="col-8 text-center">
+                <a href="@file.DownloadPath">@file.FileName</a>
+            </div>
+        </div>
+    }
 </div>

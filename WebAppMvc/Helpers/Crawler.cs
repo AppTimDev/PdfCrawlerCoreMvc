@@ -8,13 +8,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using log4net;
 
 namespace WebAppMvc.Helpers
 {
     public static class Crawler
     {
         private static string _userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36";
-        //private static ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static string GetHtml(Uri url)
         {
             StreamReader streamReader = null;
@@ -73,8 +74,8 @@ namespace WebAppMvc.Helpers
             }
             catch (Exception e)
             {
-                //_logger.Info($"DownloadImage fail, url:{url.ToString()}");
-                //_logger.Error(e);
+                _logger.Info($"DownloadImage fail, url:{url.ToString()}");
+                _logger.Error(e);
                 return null;
             }
             return result;
@@ -130,19 +131,19 @@ namespace WebAppMvc.Helpers
                     }
                     else
                     {
-                        //_logger.Info($"SaveWebImage: no image is downloaded!!");
-                        //_logger.Info($"downloadPath: {downloadPath}");
-                        //_logger.Info($"outputfilepath: {outputfilepath}");
+                        _logger.Info($"SaveWebImage: no image is downloaded!!");
+                        _logger.Info($"downloadPath: {downloadPath}");
+                        _logger.Info($"outputfilepath: {outputfilepath}");
                         throw new Exception("SaveWebImage: no image is downloaded!!");
                     }
                 }
             }
             catch (Exception e)
             {
-                //_logger.Info($"SaveWebImage fail!!");
-                //_logger.Info($"downloadPath: {downloadPath}");
-                //_logger.Info($"outputfilepath: {outputfilepath}");
-                //_logger.Error(e);
+                _logger.Info($"SaveWebImage fail!!");
+                _logger.Info($"downloadPath: {downloadPath}");
+                _logger.Info($"outputfilepath: {outputfilepath}");
+                _logger.Error(e);
                 //rethrow exception
                 throw;
             }
@@ -153,6 +154,7 @@ namespace WebAppMvc.Helpers
         {
             try
             {
+                _logger.Info("SaveWebPdf");
                 using (WebClient wc = new WebClient())
                 {
                     wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
@@ -162,10 +164,10 @@ namespace WebAppMvc.Helpers
             }
             catch (Exception e)
             {
-                //_logger.Info($"SaveWebPdf fail!!");
-                //_logger.Info($"downloadPath: {downloadPath}");
-                //_logger.Info($"outputfilepath: {outputfilepath}");
-                //_logger.Error(e);
+                _logger.Info($"SaveWebPdf fail!!");
+                _logger.Info($"downloadPath: {downloadPath}");
+                _logger.Info($"outputfilepath: {outputfilepath}");
+                _logger.Error(e);
                 //rethrow exception
                 throw;
             }
@@ -187,11 +189,11 @@ namespace WebAppMvc.Helpers
                             }
                             catch (Exception e)
                             {
-                                //_logger.Info($"SaveWebPdfs Inside Parallel!!");
-                                //_logger.Info($"downloadPath: {pdf.downloadPath}");
-                                //_logger.Info($"outputfilepath: {pdf.outputfilepath}");
-                                //_logger.Error(e);
-                                //_logger.Info($"SaveWebPdfs Inside Parallel!! end");
+                                _logger.Info($"SaveWebPdfs Inside Parallel!!");
+                                _logger.Info($"downloadPath: {pdf.downloadPath}");
+                                _logger.Info($"outputfilepath: {pdf.outputfilepath}");
+                                _logger.Error(e);
+                                _logger.Info($"SaveWebPdfs Inside Parallel!! end");
                                 //rethrow exception
                                 //throw;  
                                 //throw exception only stop part of Parallel, other can still run
@@ -201,9 +203,9 @@ namespace WebAppMvc.Helpers
                     }
                     catch (Exception e)
                     {
-                        //_logger.Info($"SaveWebPdfs Inside task!!");
-                        //_logger.Error(e);
-                        //_logger.Info($"SaveWebPdfs Inside task!! end");
+                        _logger.Info($"SaveWebPdfs Inside task!!");
+                        _logger.Error(e);
+                        _logger.Info($"SaveWebPdfs Inside task!! end");
                         //rethrow exception
                         throw;  //will not throw exception outside task and be catch
                     }
@@ -212,8 +214,8 @@ namespace WebAppMvc.Helpers
             catch (Exception e)
             {
                 //cannot be catch if Inside task throw exception
-                //_logger.Info($"SaveWebPdfs fail!!");
-                //_logger.Error(e);
+                _logger.Info($"SaveWebPdfs fail!!");
+                _logger.Error(e);
                 //rethrow exception
                 throw;
             }

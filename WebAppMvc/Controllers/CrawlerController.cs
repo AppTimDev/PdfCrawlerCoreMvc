@@ -70,7 +70,7 @@ namespace WebAppMvc.Controllers
                                         prefix = "D" + count.ToString() + "-";
                                         innertext = node.InnerText;
                                         filename = Path.GetFileName(href);  //cannot contain some symbol e.g. /\
-                                        filepath = Path.Combine(dir, prefix + filename + ".pdf");
+                                        filepath = Path.Combine(dir, prefix + filename);
                                         if (href.IndexOf("http") < 0)
                                         {
                                             if (href.StartsWith("//"))
