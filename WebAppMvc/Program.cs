@@ -9,6 +9,12 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ApiDbConnectionString"));
 });
+//add logger
+builder.Host.ConfigureLogging((hostingContext, logging) =>
+{
+    logging.AddLog4Net("log4net.config");
+    logging.SetMinimumLevel(LogLevel.Debug);
+});
 var app = builder.Build();
 
 if (args.Length == 1 && args[0].ToLower() == "seeddata")
