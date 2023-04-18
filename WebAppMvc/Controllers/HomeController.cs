@@ -7,10 +7,11 @@ namespace WebAppMvc.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -18,8 +19,11 @@ namespace WebAppMvc.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Pdf()
         {
+            string webRootPath = _webHostEnvironment.WebRootPath;
+            string dir = Path.Combine(webRootPath, "Download");
+
             return View();
         }
 

@@ -29,7 +29,6 @@ namespace WebAppMvc.Controllers
             CrawlerViewModel vm = new CrawlerViewModel();
             return View(vm);
         }
-
         
         [HttpPost]
         public async Task<IActionResult> PdfCrawler(CrawlerViewModel vm)
@@ -51,9 +50,9 @@ namespace WebAppMvc.Controllers
                             HtmlNodeCollection nodes = _doc.DocumentNode.SelectNodes("//a");
                             if (nodes != null)
                             {
-                                //string webRootPath = _webHostEnvironment.WebRootPath;
-                                string contentRootPath = _webHostEnvironment.ContentRootPath;
-                                dir = Path.Combine(contentRootPath, "Upload");
+                                string webRootPath = _webHostEnvironment.WebRootPath;
+                                //string contentRootPath = _webHostEnvironment.ContentRootPath;
+                                dir = Path.Combine(webRootPath, "Download");
                                 string href;
                                 string filename;
                                 string filepath;
@@ -80,7 +79,8 @@ namespace WebAppMvc.Controllers
                                             }
                                             else if (href.StartsWith("/"))
                                             {
-                                                pdflink = "https://" + link.Host + href;
+                                                Uri pdfUri = new Uri(link, href);
+                                                pdflink = pdfUri.AbsoluteUri;
                                             }
                                             else if (!href.Contains("/"))
                                             {
