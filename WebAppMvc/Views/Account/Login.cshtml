@@ -1,0 +1,63 @@
+﻿@using WebAppMvc.ViewModels
+@model LoginViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Login Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome-6.4.0/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome-6.4.0/css/solid.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAppMvc.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+            <div class="login-container">
+                <div class="login-title">
+                    <h2>System</h2>
+                </div>
+                <form asp-action="Login" id="form_login" onsubmit="return processLoginForm()">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="login-textbox">
+                        <div class="login-textbox-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="login-textbox-input">
+                            <input type="text" asp-for="Username" id="_Username" class="form-control" maxlength="30" placeholder="Username" value="tim">
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="login-textbox">
+                        <div class="login-textbox-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="login-textbox-input">
+                            <input type="password" asp-for="Password" id="_Password" class="form-control" maxlength="30" placeholder="Password" value="123456" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="login-btn-container" style="">
+                        <input class="btn button" type="submit" value="Log in" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="login-section">
+            <div id="copyright"> 
+                &nbsp;Copyright &copy; 2023 apptimdev.github.io All Rights Reserved.
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/login.js" asp-append-version="true"></script>
+</body>
+</html>

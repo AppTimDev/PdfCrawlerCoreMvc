@@ -1,0 +1,100 @@
+﻿.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 25rem;
+    padding: 30px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.6);
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
+}
+
+.login-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.login-textbox {
+    height: 50px;
+    margin: 20px 10px;
+}
+.login-textbox-icon {
+    float: left;
+    width: 10%;
+    font-size: 20pt;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.login-textbox-input {
+    float: right;
+    width: 85%;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 3px dodgerBlue;
+}
+
+.login-btn-container {
+    width: 100%;
+}
+
+    .login-btn-container .button {
+        width: 100%;
+        background: none;
+        font-size: 20px;
+        border: 2px solid #93ff00;
+        color: white;
+    }
+
+        .login-btn-container .button:hover {
+
+            color: #93ff00;
+        }
+
+.login-section {
+}
+/*====== test in ipad or iphone ======*/
+#copyright {
+    position: absolute;
+    color: #808080;
+    bottom: 0;
+    left: 0;
+}
+
+/*@media screen and (max-height: 500px) {
+    #copyright {
+        display: none;
+    }
+}*/
+/*=============== BREAKPOINTS ===============*/
+/* Extremely small screen devices (595px and below) */
+@media only screen and (max-width: 595px) {
+    #copyright {
+        font-size: 0.75rem;
+    }
+}
+
+/* Small screen devices (596px and above) */
+@media only screen and (min-width: 596px) {
+    #copyright {
+        font-size: 0.75rem;
+    }
+}
+/* Medium screen devices */
+@media screen and (min-width: 768px) {
+    #copyright {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+}
+
+/* Large screen devices */
+@media screen and (min-width: 1024px) {
+}
