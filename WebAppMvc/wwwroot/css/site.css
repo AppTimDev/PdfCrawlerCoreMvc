@@ -17,18 +17,21 @@ body {
   margin-bottom: 60px;
 }
 /*============ SCROLL BAR ============*/
-:root {
-    --color-dark-sea-green: #11875d;
-    --bg-color-scrollbar: hsl(0, 0%, 74%);
-    --bg-color-scrollbar-thumb: var(--color-dark-sea-green);
-}
 ::-webkit-scrollbar {
-    width: .6rem;
-    height: .6rem;
-    background: var(--bg-color-scrollbar);
+    width: 18px;
 }
-
 ::-webkit-scrollbar-thumb {
-    background: var(--bg-color-scrollbar-thumb);
+    box-shadow: inset 0 0 10px 10px #606060;
+    border: solid 5px transparent;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+    border-radius: 18px;
+}
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0 0 10px 10px #777777;
+}
+::-webkit-scrollbar-track {
 }
 /*============ SCROLL BAR END============*/
